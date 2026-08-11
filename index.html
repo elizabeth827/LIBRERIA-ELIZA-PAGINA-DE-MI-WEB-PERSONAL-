@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elizabeth Poquiviqui Jimenez | Librería Eliza - Santa Cruz, Bolivia</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#16a34a',
+              600: '#15803d',
+              700: '#15652c',
+            },
+            accent: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Custom CSS animations and Glassmorphism */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.90);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .pulse-online {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
+    }
+    .badge-cart-bounce {
+      animation: bounce 0.3s ease-in-out;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-brand-500 selection:text-white flex flex-col min-h-screen">
+
+  <!-- Header / Navigation Bar -->
+  <header class="sticky top-0 z-40 glass-nav border-b border-gray-200 transition-all shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand & Personal Identity -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-accent-500 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-brand-500/30 group-hover:scale-105 transition">
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+        <div>
+          <span class="text-xs uppercase tracking-widest text-brand-600 font-extrabold block">Librería Eliza</span>
+          <span class="text-base font-extrabold text-gray-900 tracking-tight block">Elizabeth Poquiviqui J.</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-gray-600">
+        <a href="#inicio" class="hover:text-brand-600 transition">Inicio</a>
+        <a href="#catalogo" class="hover:text-brand-600 transition">Catálogo Escolar</a>
+        <a href="#sobre-mi" class="hover:text-brand-600 transition">Atención Personalizada</a>
+        <a href="#contacto" class="hover:text-brand-600 transition">Ubicación & Cotizaciones</a>
+      </nav>
+
+      <!-- Cart Trigger & Action -->
+      <div class="flex items-center space-x-4">
+        <button id="openCartBtn" onclick="toggleCartDrawer()" class="relative bg-brand-50 hover:bg-brand-100 text-brand-700 px-4 py-2.5 rounded-xl text-sm font-bold flex items-center space-x-2 border border-brand-200 transition shadow-sm">
+          <i class="fa-solid fa-cart-shopping text-base"></i>
+          <span class="hidden sm:inline">Mi Pedido</span>
+          <span id="cartCountBadge" class="bg-brand-600 text-white text-xs px-2 py-0.5 rounded-full font-bold ml-1">0</span>
+        </button>
+
+        <a href="https://wa.me/59163485158?text=Hola%20Elizabeth,%20quisiera%20consultar%20sobre%20materiales%20escolares" target="_blank" rel="noopener noreferrer" class="hidden lg:flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-xl text-sm font-bold shadow-md shadow-emerald-600/20 transition">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Contactar Directo</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION (AIDA: Attention) -->
+  <section id="inicio" class="relative bg-gradient-to-b from-brand-50/60 via-white to-gray-50 py-12 lg:py-20 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold border border-emerald-200">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+            <span>Atención Directa en Santa Cruz de la Sierra</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+            Todo en Material Escolar y de Oficina con la Garantía de <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-accent-600">Elizabeth Poquiviqui</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            En <strong>Librería Eliza</strong> preparamos tus listas escolares completas con productos de alta calidad al mejor precio del mercado. Haz tu pedido en línea e insértalo directo a nuestro WhatsApp.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#catalogo" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-xl text-base font-bold shadow-lg shadow-brand-600/30 flex items-center justify-center space-x-3 transition transform hover:-translate-y-0.5">
+              <i class="fa-solid fa-basket-shopping"></i>
+              <span>Ver Catálogo Escolar</span>
+            </a>
+            
+            <a href="https://wa.me/59163485158?text=Hola%20Elizabeth,%20deseo%20cotizar%20mi%20lista%20de%20útiles%20escolares" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-white hover:bg-gray-50 text-gray-800 border-2 border-gray-200 px-8 py-4 rounded-xl text-base font-bold flex items-center justify-center space-x-3 shadow-sm transition">
+              <i class="fa-brands fa-whatsapp text-emerald-600 text-xl"></i>
+              <span>Cotizar Lista Completa</span>
+            </a>
+          </div>
+
+          <!-- Quick Trust Badges -->
+          <div class="pt-6 grid grid-cols-3 gap-4 border-t border-gray-200/80 max-w-lg mx-auto lg:mx-0 text-center">
+            <div>
+              <span class="text-xl sm:text-2xl font-black text-brand-600 block">100%</span>
+              <span class="text-xs text-gray-500 font-medium">Garantizado</span>
+            </div>
+            <div>
+              <span class="text-xl sm:text-2xl font-black text-brand-600 block">Santa Cruz</span>
+              <span class="text-xs text-gray-500 font-medium">Radial 26, 4to Anillo</span>
+            </div>
+            <div>
+              <span class="text-xl sm:text-2xl font-black text-brand-600 block">Rápido</span>
+              <span class="text-xs text-gray-500 font-medium">Atención WhatsApp</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Card Graphic -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md bg-white border border-gray-200 rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6">
+            <div class="absolute -top-4 -right-4 bg-accent-500 text-gray-900 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+              Atención Inmediata
+            </div>
+
+            <div class="flex items-center space-x-4 border-b border-gray-100 pb-4">
+              <div class="w-16 h-16 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center text-2xl font-bold">
+                <i class="fa-solid fa-user-check"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">Elizabeth Poquiviqui J.</h3>
+                <p class="text-xs text-brand-600 font-bold">Propietaria & Asesora Comercial</p>
+                <p class="text-xs text-gray-400">Librería Eliza - Bolivia</p>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-xs text-gray-600">
+              <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                <span class="font-semibold"><i class="fa-solid fa-location-dot text-brand-600 mr-2"></i>Ubicación:</span>
+                <span class="text-gray-800 font-bold">Radial 26, 4to Anillo</span>
+              </div>
+              <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                <span class="font-semibold"><i class="fa-solid fa-phone text-brand-600 mr-2"></i>Contacto:</span>
+                <span class="text-gray-800 font-bold">+591 63485158</span>
+              </div>
+              <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                <span class="font-semibold"><i class="fa-solid fa-clock text-brand-600 mr-2"></i>Estado:</span>
+                <span class="text-emerald-600 font-bold flex items-center">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5 pulse-online"></span> Disponible
+                </span>
+              </div>
+            </div>
+
+            <div class="bg-brand-50 border border-brand-200 rounded-2xl p-4 text-center">
+              <p class="text-xs text-brand-800 font-medium">
+                "Nos encargamos de juntar todos tus cuadernos, hojas y útiles para ahorrarte tiempo y dinero."
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS BAR (AIDA: Interest) -->
+  <section class="bg-white py-10 border-y border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        
+        <div class="flex items-center space-x-4 p-4 rounded-2xl bg-gray-50 border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fa-solid fa-check-double"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-gray-900">Precios Competitivos</h4>
+            <p class="text-xs text-gray-500">Ahorra en compras por mayor y menor</p>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-4 p-4 rounded-2xl bg-gray-50 border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fa-solid fa-list-check"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-gray-900">Listas Útiles Completas</h4>
+            <p class="text-xs text-gray-500">Nos envías tu lista y te la armamos</p>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-4 p-4 rounded-2xl bg-gray-50 border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fa-solid fa-map-pin"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-gray-900">Punto Estratégico</h4>
+            <p class="text-xs text-gray-500">Fácil acceso en 4to Anillo Santa Cruz</p>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-4 p-4 rounded-2xl bg-gray-50 border border-gray-100">
+          <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fa-brands fa-whatsapp text-emerald-600"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-gray-900">Pedido por WhatsApp</h4>
+            <p class="text-xs text-gray-500">Confirmación rápida y directa</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG / SHOPPING PRODUCTS (AIDA: Desire) -->
+  <section id="catalogo" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600">Catálogo de Productos Escolares</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-gray-900">Materiales y Útiles al Mejor Precio</h2>
+        <p class="text-sm text-gray-600">
+          Selecciona las cantidades necesarias de cada producto y presiona <strong>"Agregar al Pedido"</strong> para armar tu carrito interactivo.
+        </p>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="productsGrid">
+        <!-- Generated via JavaScript -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SHOPPING CART SLIDE-OVER DRAWER -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div onclick="toggleCartDrawer()" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity"></div>
+
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+        
+        <!-- Cart Header -->
+        <div class="p-6 bg-brand-600 text-white flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <i class="fa-solid fa-bag-shopping text-2xl"></i>
+            <div>
+              <h3 class="text-lg font-bold">Resumen de Tu Pedido</h3>
+              <p class="text-xs text-brand-100">Librería Eliza - Elizabeth Poquiviqui J.</p>
+            </div>
+          </div>
+          <button onclick="toggleCartDrawer()" class="text-white hover:text-gray-200 text-2xl p-2">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cartItemsContainer">
+          <!-- JS dynamic content -->
+        </div>
+
+        <!-- Cart Footer / Checkout -->
+        <div class="border-t border-gray-200 p-6 space-y-4 bg-gray-50">
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs text-gray-500">
+              <span>Subtotal estimados:</span>
+              <span id="cartSubtotal">0.00 Bs.</span>
+            </div>
+            <div class="flex justify-between text-base font-extrabold text-gray-900 pt-2 border-t border-gray-200">
+              <span>Total a pagar:</span>
+              <span id="cartTotal" class="text-brand-600 text-xl">0.00 Bs.</span>
+            </div>
+          </div>
+
+          <button onclick="sendOrderToWhatsApp()" id="checkoutBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-bold text-sm flex items-center justify-center space-x-3 shadow-lg shadow-emerald-600/30 transition disabled:opacity-50">
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+            <span>Finalizar Pedido por WhatsApp</span>
+          </button>
+          
+          <p class="text-[11px] text-center text-gray-400">
+            El pedido se formateará y enviará directamente al WhatsApp de Elizabeth Poquiviqui (+591 63485158).
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT ME / PERSONAL BRAND SECTION -->
+  <section id="sobre-mi" class="py-16 bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-brand-900 to-gray-900 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+        <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-brand-500/20 rounded-full blur-3xl"></div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <div class="lg:col-span-8 space-y-4">
+            <span class="px-3 py-1 rounded-full bg-brand-500/20 border border-brand-500/30 text-brand-300 text-xs font-bold uppercase tracking-wider">
+              Atención Personalizada
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              Compromiso y Calidad para tus Útiles Escolares
+            </h2>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+              Soy <strong>Elizabeth Poquiviqui Jimenez</strong>, fundadora de <strong>Librería Eliza</strong>. Mi misión es facilitarle la vida a padres de familia, estudiantes y profesores en Santa Cruz de la Sierra ofreciendo cuadernos, papeles, lápices y materiales especiales con atención cálida, transparente y sin complicaciones.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-4 text-xs text-gray-300">
+              <div class="flex items-center space-x-2 bg-white/10 px-3 py-2 rounded-xl">
+                <i class="fa-solid fa-location-dot text-brand-400"></i>
+                <span>Radial 26, 4to Anillo - Santa Cruz</span>
+              </div>
+              <div class="flex items-center space-x-2 bg-white/10 px-3 py-2 rounded-xl">
+                <i class="fa-solid fa-phone text-brand-400"></i>
+                <span>+591 63485158</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 text-center lg:text-right">
+            <a href="https://wa.me/59163485158?text=Hola%20Elizabeth,%20quisiera%20hacerte%20una%20consulta" target="_blank" class="inline-flex items-center space-x-3 bg-accent-500 hover:bg-accent-600 text-gray-900 px-8 py-4 rounded-2xl font-black text-sm shadow-xl transition transform hover:scale-105">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+              <span>Hablar con Elizabeth</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & QUOTATION FORM (Demonstrating HTML5 Form API & CRO) -->
+  <section id="contacto" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Info Column -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="space-y-2">
+            <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600">Contacto Directo</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900">¿Tienes dudas o una lista especial?</h2>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Completa el formulario para solicitar una cotización especial o visítanos directamente en nuestra ubicación en Santa Cruz.
+            </p>
+          </div>
+
+          <div class="space-y-4 text-sm">
+            <div class="flex items-start space-x-4 p-4 bg-white rounded-2xl border border-gray-200">
+              <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center text-lg flex-shrink-0 mt-0.5">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900">Dirección del Negocio:</h4>
+                <p class="text-xs text-gray-600 mt-0.5">Radial 26, cuarto anillo. Santa Cruz, Bolivia.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 p-4 bg-white rounded-2xl border border-gray-200">
+              <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center text-lg flex-shrink-0 mt-0.5">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900">WhatsApp / Teléfono:</h4>
+                <p class="text-xs text-gray-600 mt-0.5">+591 63485158 (Elizabeth Poquiviqui)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="lg:col-span-7">
+          <div class="bg-white border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-xl">
+            <h3 class="text-lg font-bold text-gray-900 mb-6">Solicitud de Cotización Rápida</h3>
+            
+            <form id="quoteForm" onsubmit="handleQuoteSubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1" for="nombreCliente">Nombre Completo *</label>
+                  <input type="text" id="nombreCliente" required placeholder="Tu nombre"
+                    class="w-full text-sm px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1" for="telefonoCliente">Teléfono WhatsApp *</label>
+                  <input type="tel" id="telefonoCliente" required placeholder="Ej: 71234567" pattern="[0-9]{7,12}"
+                    class="w-full text-sm px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1" for="detalleLista">Detalle de Lista de Útiles o Consulta *</label>
+                <textarea id="detalleLista" rows="4" required placeholder="Describe qué materiales necesitas (ej: 3 cuadernos espiral, 2 marcadores, 1 plastoformo...)"
+                  class="w-full text-sm px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-500 transition"></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white py-4 rounded-xl font-bold text-sm shadow-lg shadow-brand-600/30 transition flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Enviar Consulta por WhatsApp</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF / TESTIMONIALS (AIDA: Desire) -->
+  <section class="py-16 bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600">Opiniones de Clientes</span>
+        <h2 class="text-2xl font-extrabold text-gray-900 mt-1">Lo que dicen en Santa Cruz</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 space-y-3">
+          <div class="flex text-amber-400 text-xs">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed font-medium">
+            "Súper rápida la atención de Elizabeth. Le mandé la lista de útiles por WhatsApp y me armó todo exacto. Muy recomendada en la Radial 26."
+          </p>
+          <span class="text-xs font-bold text-gray-900 block">- María Rene V. (Madre de Familia)</span>
+        </div>
+
+        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 space-y-3">
+          <div class="flex text-amber-400 text-xs">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed font-medium">
+            "Excelentes precios en cuadernos de oficio y hojas de carpetas. Buenísima atención y ahorro garantizado."
+          </p>
+          <span class="text-xs font-bold text-gray-900 block">- Carlos Gutierrez (Estudiante Universitario)</span>
+        </div>
+
+        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 space-y-3">
+          <div class="flex text-amber-400 text-xs">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-xs text-gray-600 leading-relaxed font-medium">
+            "Siempre compro aquí el plastoformo y útiles de papelería para el colegio. Todo completo y buena calidad."
+          </p>
+          <span class="text-xs font-bold text-gray-900 block">- Laura S. (Santa Cruz)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-400 py-10 mt-auto border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <div class="flex items-center justify-center space-x-3 text-white">
+        <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center font-bold text-sm">
+          <i class="fa-solid fa-book"></i>
+        </div>
+        <span class="font-bold text-base">Librería Eliza</span>
+      </div>
+      
+      <address class="not-italic text-xs text-gray-400">
+        Elizabeth Poquiviqui Jimenez &bull; Radial 26, cuarto anillo, Santa Cruz, Bolivia. &bull; Tel: +591 63485158
+      </address>
+
+      <p class="text-[11px] text-gray-500">
+        &copy; 2026 Librería Eliza. Todos los derechos reservados. Desarrollado con estándar HTML5 Semántico &amp; CRO.
+      </p>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON WITH PERMANENT ONLINE BADGE -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center">
+    <!-- Floating Badge Callout -->
+    <a href="https://wa.me/59163485158?text=Hola%20Elizabeth,%20quiero%20hacer%20un%20pedido%20en%20Librer%C3%ADa%20Eliza" target="_blank" rel="noopener noreferrer" class="group flex items-center bg-emerald-600 hover:bg-emerald-700 text-white rounded-full p-3 shadow-2xl transition transform hover:scale-105">
+      <span class="hidden sm:inline-block px-3 text-xs font-bold border-r border-emerald-500 mr-1">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-300 mr-1.5 pulse-online"></span>
+        ¡Hola! Estoy online
+      </span>
+      <i class="fa-brands fa-whatsapp text-2xl px-1"></i>
+    </a>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC (Catalog, LocalStorage & WhatsApp Integration) -->
+  <script>
+    // Product Catalog Data based on user inputs (Prices in Bolivianos Bs.)
+    const products = [
+      { id: 1, name: "Cuaderno Espiral Carta", price: 24, category: "Cuadernos", icon: "fa-book" },
+      { id: 2, name: "Cuaderno Oficio", price: 30, category: "Cuadernos", icon: "fa-book-open" },
+      { id: 3, name: "Hoja de Carpetas", price: 40, category: "Hojas", icon: "fa-file-lines" },
+      { id: 4, name: "Hoja de Papel Bond", price: 45, category: "Hojas", icon: "fa-copy" },
+      { id: 5, name: "Cuaderno Medio Oficio", price: 15, category: "Cuadernos", icon: "fa-book-bookmark" },
+      { id: 6, name: "Set de Lápiz de Colores", price: 25, category: "Arte y Pintura", icon: "fa-palette" },
+      { id: 7, name: "Set de Marcadores de Colores", price: 25, category: "Arte y Pintura", icon: "fa-pen-nib" },
+      { id: 8, name: "Plastoformo de 2 cm", price: 14, category: "Manualidades", icon: "fa-layer-group" }
+    ];
+
+    // Shopping Cart State (Persisted with localStorage as detailed in section 4.1)
+    let cart = JSON.parse(localStorage.getItem('libreria_eliza_cart')) || [];
+
+    // Render Catalog Items
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = products.map(p => `
+        <article class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid ${p.icon}"></i>
+            </div>
+            <span class="text-[10px] uppercase font-extrabold tracking-wider text-brand-600 bg-brand-50 px-2 py-0.5 rounded-md">
+              ${p.category}
+            </span>
+            <h3 class="text-base font-bold text-gray-900 mt-2">${p.name}</h3>
+            <p class="text-xl font-extrabold text-gray-900 mt-2">${p.price} <span class="text-xs text-gray-500 font-semibold">Bs.</span></p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-gray-100 flex items-center space-x-2">
+            <button onclick="addToCart(${p.id})" class="w-full bg-brand-600 hover:bg-brand-700 text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center space-x-2 transition">
+              <i class="fa-solid fa-cart-plus"></i>
+              <span>Agregar al Pedido</span>
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Add Item to Cart
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      const existing = cart.find(item => item.id === productId);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      saveAndRenderCart();
+      toggleCartDrawer(true); // Open drawer on addition
+    }
+
+    // Update Quantity
+    function updateQuantity(productId, delta) {
+      const item = cart.find(i => i.id === productId);
+      if (item) {
+        item.quantity += delta;
+        if (item.quantity <= 0) {
+          cart = cart.filter(i => i.id !== productId);
+        }
+      }
+      saveAndRenderCart();
+    }
+
+    // Save state to LocalStorage
+    function saveAndRenderCart() {
+      localStorage.setItem('libreria_eliza_cart', JSON.stringify(cart));
+      renderCartDrawer();
+    }
+
+    // Render Cart Drawer Content
+    function renderCartDrawer() {
+      const container = document.getElementById('cartItemsContainer');
+      const badge = document.getElementById('cartCountBadge');
+      const subtotalEl = document.getElementById('cartSubtotal');
+      const totalEl = document.getElementById('cartTotal');
+      const checkoutBtn = document.getElementById('checkoutBtn');
+
+      const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+      const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+
+      badge.innerText = totalItems;
+      subtotalEl.innerText = `${totalPrice.toFixed(2)} Bs.`;
+      totalEl.innerText = `${totalPrice.toFixed(2)} Bs.`;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 text-gray-400 space-y-3">
+            <i class="fa-solid fa-cart-flatbed text-4xl"></i>
+            <p class="text-xs font-medium">Tu pedido está vacío.</p>
+            <p class="text-[11px] text-gray-400">Agrega cuadernos u hojas desde el catálogo.</p>
+          </div>
+        `;
+        checkoutBtn.disabled = true;
+        return;
+      }
+
+      checkoutBtn.disabled = false;
+      container.innerHTML = cart.map(item => `
+        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-200 text-xs">
+          <div class="space-y-0.5">
+            <h4 class="font-bold text-gray-900">${item.name}</h4>
+            <p class="text-gray-500">${item.price} Bs. c/u</p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 bg-white border rounded font-bold text-gray-600 hover:bg-gray-100 flex items-center justify-center">-</button>
+            <span class="font-bold text-gray-900 px-1">${item.quantity}</span>
+            <button onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 bg-white border rounded font-bold text-gray-600 hover:bg-gray-100 flex items-center justify-center">+</button>
+            <span class="font-bold text-brand-600 ml-2">${(item.price * item.quantity).toFixed(2)} Bs.</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Toggle Drawer Visibility
+    function toggleCartDrawer(forceOpen = false) {
+      const drawer = document.getElementById('cartDrawer');
+      if (forceOpen) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.toggle('hidden');
+      }
+    }
+
+    // Send Cart Order via Formatted WhatsApp Message
+    function sendOrderToWhatsApp() {
+      if (cart.length === 0) return;
+
+      let msg = `*NUEVO PEDIDO DE MATERIALES ESCOLAR*\n`;
+      msg += `*Librería Eliza - Santa Cruz*\n`;
+      msg += `------------------------------------\n\n`;
+
+      cart.forEach(item => {
+        msg += `• *${item.quantity}x* ${item.name} = *${(item.price * item.quantity).toFixed(2)} Bs.*\n`;
+      });
+
+      const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+      msg += `\n------------------------------------\n`;
+      msg += `*TOTAL A PAGAR: ${total.toFixed(2)} Bs.*\n\n`;
+      msg += `Ubicación de atención: Radial 26, 4to Anillo.\n`;
+      msg += `Por favor, confirmarme la disponibilidad para retiro o entrega.`;
+
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://wa.me/59163485158?text=${encoded}`, '_blank');
+    }
+
+    // Quotation Form Handler
+    function handleQuoteSubmit(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombreCliente').value;
+      const telefono = document.getElementById('telefonoCliente').value;
+      const detalle = document.getElementById('detalleLista').value;
+
+      let msg = `*SOLICITUD DE COTIZACIÓN - LIBRERÍA ELIZA*\n\n`;
+      msg += `*Nombre:* ${nombre}\n`;
+      msg += `*Teléfono:* ${telefono}\n\n`;
+      msg += `*Detalle o Lista de Útiles:*\n${detalle}\n\n`;
+      msg += `_Solicitado desde el sitio web personal._`;
+
+      window.open(`https://wa.me/59163485158?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // Real-Time HTML5 Form Validation Handler (Section 3.3 in Technical Report)
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProducts();
+      renderCartDrawer();
+
+      const inputNombre = document.querySelector("#nombreCliente");
+      if (inputNombre) {
+        inputNombre.addEventListener("input", (e) => {
+          if (e.target.validity.valid) {
+            e.target.style.borderColor = "#16a34a"; // Green highlight if valid
+          } else {
+            e.target.style.borderColor = "#ef4444"; // Red highlight if invalid
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
